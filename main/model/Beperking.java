@@ -1,33 +1,23 @@
 package model;
 
 public enum Beperking {
-    /*TWO("Two", 2),
-    THREE("Three", 3),
-    FOUR("Four", 4),
-    FIVE("Five", 5),
-    SIX("Six", 6),
-    SEVEN("Seven", 7),
-    EIGHT("Eight", 8),
-    NINE("Nine", 9),
-    TEN("Ten", 10),
-    JACK("Jack", 11),
-    QUEEN("Queen", 12),
-    KING("King", 13),
-    ACE("Ace", 14);
+    FIRST("minder dan 6 punten en een minimum van 4 punten in P1"),
+    SECOND("6 tot 8 punten en minder dan 4 punten in P1"),
+    THIRD("6 tot 8 punten en een minimum van 4 punten in P1"),
+    FOURTH("9 tot 11 punten en minder dan 4 punten in P1"),
+    FIFTH("9 tot 11 punten en een minimum van 4 punten in P1"),
+    SIXTH("12 tot 14 punten"),
+    SEVENTH("15 tot 17 punten"),
+    EIGHTH("18 tot 20 punten"),
+    NINETH("meer dan 20 punten");
 
-    private final String rankString;
-    private final int rankValue;
+    private final String beperkingBeschrijving;
 
-    CardRank(String rankString, int rankValue) {
-        this.rankString = rankString;
-        this.rankValue = rankValue;
+    Beperking(String beperkingBeschrijving) {
+        this.beperkingBeschrijving = beperkingBeschrijving;
     }
 
-    public String getBeperkingsBeschrijving() {
-        return rankString;
+    public String getBeperkingBeschrijving() {
+        return beperkingBeschrijving;
     }
-
-    public int getRankValue() {
-        return rankValue;
-    }*/
 }
