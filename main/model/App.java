@@ -1,6 +1,9 @@
 package model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -25,14 +28,32 @@ public class App {
            symbolInput
         ));
 
-        LocalDateTime after2019;
-        LocalDateTime before2019;
-        LocalDateTime olderThan25;
-        LocalDateTime today;
-        LocalDateTime fiveYearOld;
-        LocalDateTime tenYearOld;
-        LocalDateTime fifteenYearOld;
-        LocalDateTime twentyYearOld;
-        LocalDateTime twentyFourYearOld;
+
+
+        LocalDate after2019 = LocalDate.of(2019, 2,13);
+        LocalDate before2019 = LocalDate.of(2018, 2,13);
+        LocalDate olderThan25 = LocalDate.of(1990, 3,23);
+        LocalDate today = LocalDate.now();
+        LocalDate fiveYearOld = LocalDate.now().minus(Period.ofYears(5));
+        LocalDate tenYearOld = LocalDate.now().minus(Period.ofYears(10));
+        LocalDate fifteenYearOld = LocalDate.now().minus(Period.ofYears(15));
+        LocalDate twentyYearOld = LocalDate.now().minus(Period.ofYears(20));
+        LocalDate twentyFourYearOld = LocalDate.now().minus(Period.ofYears(24));
+
+
+
+        ArrayList<LocalDate> localDateArrayList = new ArrayList<>();
+
+        localDateArrayList.addAll(Arrays.asList(
+           after2019,
+           before2019,
+           olderThan25,
+           today,
+           fiveYearOld,
+           tenYearOld,
+           fifteenYearOld,
+           twentyYearOld,
+                twentyFourYearOld
+        ));
     }
 }
