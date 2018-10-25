@@ -8,15 +8,43 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class App {
+    static ArrayList<LocalDate> localDateArrayList = new ArrayList<>();
+    static ArrayList<String> stringArrayList = new ArrayList<>();
+
+    static LocalDate after2019 = LocalDate.of(2019, 2,13);
+    static LocalDate before2019 = LocalDate.of(2018, 2,13);
+    static LocalDate olderThan25 = LocalDate.of(1990, 3,23);
+    static LocalDate today = LocalDate.now();
+    static LocalDate fiveYearOld = LocalDate.now().minus(Period.ofYears(5));
+    static LocalDate tenYearOld = LocalDate.now().minus(Period.ofYears(10));
+    static LocalDate fifteenYearOld = LocalDate.now().minus(Period.ofYears(15));
+    static LocalDate twentyYearOld = LocalDate.now().minus(Period.ofYears(20));
+    static LocalDate twentyFourYearOld = LocalDate.now().minus(Period.ofYears(24));
+
+    static String firstChild = "Kind_1";
+    static String secondChild = "Kind_2";
+    static String thirdChild = "Kind_3";
+    static String fourthChild = "Kind_4";
+    static String fifthChild = "Kind_5";
+    static String numberInput = "1234567890";
+    static String symbolInput = "!@#$%^&*()";
+
+    //beperking
+    static boolean beperking;
+
+    static boolean wees;
+
+    static boolean eenOuderInLeven;
+
+    static boolean 
+
+
+
+
+
+
+
     public static void main(String[] args) {
-        String firstChild = "Kind_1";
-        String secondChild = "Kind_2";
-        String thirdChild = "Kind_3";
-        String fourthChild = "Kind_4";
-        String fifthChild = "Kind_5";
-        String numberInput = "1234567890";
-        String symbolInput = "!@#$%^&*()";
-        ArrayList<String> stringArrayList = new ArrayList<>();
 
         stringArrayList.addAll(Arrays.asList(
            firstChild,
@@ -29,21 +57,6 @@ public class App {
         ));
 
 
-
-        LocalDate after2019 = LocalDate.of(2019, 2,13);
-        LocalDate before2019 = LocalDate.of(2018, 2,13);
-        LocalDate olderThan25 = LocalDate.of(1990, 3,23);
-        LocalDate today = LocalDate.now();
-        LocalDate fiveYearOld = LocalDate.now().minus(Period.ofYears(5));
-        LocalDate tenYearOld = LocalDate.now().minus(Period.ofYears(10));
-        LocalDate fifteenYearOld = LocalDate.now().minus(Period.ofYears(15));
-        LocalDate twentyYearOld = LocalDate.now().minus(Period.ofYears(20));
-        LocalDate twentyFourYearOld = LocalDate.now().minus(Period.ofYears(24));
-
-
-
-        ArrayList<LocalDate> localDateArrayList = new ArrayList<>();
-
         localDateArrayList.addAll(Arrays.asList(
            after2019,
            before2019,
@@ -55,5 +68,7 @@ public class App {
            twentyYearOld,
                 twentyFourYearOld
         ));
+
+
     }
 }
