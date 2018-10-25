@@ -13,13 +13,20 @@ public class App {
 
     static LocalDate after2019 = LocalDate.of(2019, 2,13);
     static LocalDate before2019 = LocalDate.of(2018, 2,13);
-    static LocalDate olderThan25 = LocalDate.of(1990, 3,23);
+    static LocalDate olderThanTwentyFive = LocalDate.now().minus(Period.ofYears(25)).minus(Period.ofDays(1));
+    static LocalDate twentyFive = LocalDate.now().minus(Period.ofYears(25));
+    static LocalDate youngerThanTwentyFive = LocalDate.now().minus(Period.ofYears(25)).plus(Period.ofDays(1));
+    static LocalDate olderThanSix = LocalDate.now().minus(Period.ofYears(6)).minus(Period.ofDays(1));
+    static LocalDate six = LocalDate.now().minus(Period.ofYears(6));
+    static LocalDate youngerThanSix = LocalDate.now().minus(Period.ofYears(6)).plus(Period.ofDays(1));
+    static LocalDate olderThanTwelve = LocalDate.now().minus(Period.ofYears(12)).minus(Period.ofDays(1));
+    static LocalDate twelve = LocalDate.now().minus(Period.ofYears(12));
+    static LocalDate youngerThanTwelve = LocalDate.now().minus(Period.ofYears(12)).plus(Period.ofDays(1));
+    static LocalDate olderThanEighteen = LocalDate.now().minus(Period.ofYears(18)).minus(Period.ofDays(1));
+    static LocalDate eigteen = LocalDate.now().minus(Period.ofYears(18));
+    static LocalDate youngerThanEighteen = LocalDate.now().minus(Period.ofYears(18)).plus(Period.ofDays(1));
     static LocalDate today = LocalDate.now();
-    static LocalDate fiveYearOld = LocalDate.now().minus(Period.ofYears(5));
-    static LocalDate tenYearOld = LocalDate.now().minus(Period.ofYears(10));
-    static LocalDate fifteenYearOld = LocalDate.now().minus(Period.ofYears(15));
-    static LocalDate twentyYearOld = LocalDate.now().minus(Period.ofYears(20));
-    static LocalDate twentyFourYearOld = LocalDate.now().minus(Period.ofYears(24));
+
 
     static String firstChild = "Kind_1";
     static String secondChild = "Kind_2";
@@ -29,19 +36,16 @@ public class App {
     static String numberInput = "1234567890";
     static String symbolInput = "!@#$%^&*()";
 
-    //beperking
+
     static boolean beperking;
 
     static boolean wees;
 
     static boolean eenOuderInLeven;
 
-    static boolean 
+    static boolean ouderHertrouwdOfSamenwonend;
 
-
-
-
-
+    static boolean kindVerlaten;
 
 
     public static void main(String[] args) {
@@ -60,13 +64,19 @@ public class App {
         localDateArrayList.addAll(Arrays.asList(
            after2019,
            before2019,
-           olderThan25,
            today,
-           fiveYearOld,
-           tenYearOld,
-           fifteenYearOld,
-           twentyYearOld,
-                twentyFourYearOld
+           olderThanSix,
+           olderThanTwelve,
+           olderThanEighteen,
+           olderThanTwentyFive,
+           youngerThanSix,
+           youngerThanTwelve,
+           youngerThanEighteen,
+           youngerThanTwentyFive,
+           six,
+           twelve,
+           eigteen,
+           twentyFive
         ));
 
 
