@@ -1,7 +1,6 @@
 package model;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -16,17 +15,27 @@ public class App {
     private static StreamWriter streamWriter;
 
     public static void main(String[] args) {
-        try {
-            Path temp = Files.createFile(Paths.get("C\\Users\\jimve\\Documents\\TestCases.csv"));
-            //streamWriter = new StreamWriter("C\\Users\\jimve\\Documents\\TestCases.csv");
-        } catch (IOException ioe) {
-            System.out.println("Failed to create streamwriter");
-            ioe.printStackTrace();
-        } catch (Exception e) {
-            e.getStackTrace();
-        }
         fillArrayLists();
-        /*
+        Path filePath = Paths.get("TestCases.csv");
+        try {
+            streamWriter = new StreamWriter(filePath);
+            startPrinting(streamWriter);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        } finally {
+            streamWriter.closeWriter();
+        }
+    }
+
+    private static void fillArrayLists() {
+        beperkingenArrayList.addAll(Arrays.asList(Beperkingen.values()));
+        datumsArrayList.addAll(Arrays.asList(Datums.values()));
+        rechthebbendeSituatiesArrayList.addAll(Arrays.asList(RechthebbendeSituaties.values()));
+        bijslagtrekkendeSituatiesArrayList.addAll(Arrays.asList(BijslagtrekkendeSituaties.values()));
+        weesBooleansArrayList.addAll(Arrays.asList(WeesBooleans.values()));
+    }
+
+    private static void startPrinting(StreamWriter streamWriter) {
         datumsArrayList.forEach(datum -> {
             beperkingenArrayList.forEach(beperking -> {
                 weesBooleansArrayList.forEach(weesBooleans -> {
@@ -45,14 +54,5 @@ public class App {
                 });
             });
         });
-        */
-    }
-
-    private static void fillArrayLists() {
-        beperkingenArrayList.addAll(Arrays.asList(Beperkingen.values()));
-        datumsArrayList.addAll(Arrays.asList(Datums.values()));
-        rechthebbendeSituatiesArrayList.addAll(Arrays.asList(RechthebbendeSituaties.values()));
-        bijslagtrekkendeSituatiesArrayList.addAll(Arrays.asList(BijslagtrekkendeSituaties.values()));
-        weesBooleansArrayList.addAll(Arrays.asList(WeesBooleans.values()));
     }
 }

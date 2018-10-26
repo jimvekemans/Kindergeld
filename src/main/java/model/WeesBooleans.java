@@ -14,6 +14,10 @@ public enum WeesBooleans {
             boolean second,
             boolean third,
             boolean fourth) {
+        this.first = first;
+        this.second = second;
+        this.third = third;
+        this.fourth = fourth;
     }
 
     boolean[] getBooleans() {
