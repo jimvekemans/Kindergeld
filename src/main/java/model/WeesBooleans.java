@@ -19,4 +19,8 @@ public enum WeesBooleans {
     boolean[] getBooleans() {
         return new boolean[]{first, second, third, fourth};
     }
+
+    public String getBooleanWaardes() {
+        return (first + ", " + second + ", " + third + ", " + fourth);
+    }
 }

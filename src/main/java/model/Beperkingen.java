@@ -1,6 +1,7 @@
 package model;
 
 public enum Beperkingen {
+    GEEN("geen beperking"),
     EERSTE("minder dan 6 punten en een minimum van 4 punten in P1"),
     TWEEDE("6 tot 8 punten en minder dan 4 punten in P1"),
     DERDER("6 tot 8 punten en een minimum van 4 punten in P1"),
