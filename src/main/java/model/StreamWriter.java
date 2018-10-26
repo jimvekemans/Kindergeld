@@ -1,32 +1,41 @@
 package model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.IOException;
 
 public class StreamWriter {
+
+    private static final String COMMA_DELIMITER = ",";
+    private static final String NEW_LINE_SEPARATOR = "\n";
+
+    //CSV file header
+    private static final String FILE_HEADER = "id,firstName,lastName,gender,age";
+
     public static void main(String[] args) {
-        PrintWriter pw = null;
-        try {
-            pw = new PrintWriter(new File("/Users/lesleyh/TestBestanden/test.csv"));
-        } catch (FileNotFoundException e) {
+
+        FileWriter fileWriter = null;
+
+        try{
+           fileWriter = new FileWriter("/Users/lesleyh/TestBestanden/test.csv");
+
+           fileWriter.append(FILE_HEADER.toString());
+
+            System.out.println("CSV file was created successfully !!!");
+        }catch (Exception e){
+            System.out.println("Error in CsvFileWriter !!!");
             e.printStackTrace();
+        }finally {
+
+            try {
+                fileWriter.flush();
+                fileWriter.close();
+            } catch (IOException e) {
+                System.out.println("Error while flushing/closing fileWriter !!!");
+                e.printStackTrace();
+            }
+
         }
-        StringBuilder sb = new StringBuilder();
-        sb.append("id");
-        sb.append(',');
-        sb.append("Name");
-        sb.append('\n');
 
-        sb.append("1");
-        sb.append(',');
-        sb.append("Prashant Ghimire");
-        sb.append('\n');
 
-        pw.write(sb.toString());
-        pw.close();
     }
 }
