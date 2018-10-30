@@ -3,11 +3,12 @@ package model;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
+import java.util.Collection;
 
-public class StreamWriter {
+public class CustomWriter {
     static PrintWriter printWriter;
 
-    public StreamWriter(Path filePath) throws IOException {
+    public CustomWriter(Path filePath) throws IOException {
         printWriter = new PrintWriter(filePath.toString());
     }
 
@@ -18,6 +19,10 @@ public class StreamWriter {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    void writeAllToFile(Collection<String> strings) {
+        strings.forEach(this::writeToFile);
     }
 
     void closeWriter() {
