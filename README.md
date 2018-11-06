@@ -1,4 +1,4 @@
-# Kindergeld
+# Instructions
 
 First of all, open the entire folder as project in IntelliJ
 To generate the most up-to-date feature files yourself, run the the App-class first.
