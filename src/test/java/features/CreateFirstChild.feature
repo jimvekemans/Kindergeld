@@ -1,14 +1,18 @@
 Feature: CreateFirstChildFeature
   Interaction logic for creating the first child
 
-  Scenario Outline: Creation again
+  Scenario Outline: CreateFirstChild
     Given I go to website "http://vlaanderen.famifed.be/nl/calculator"
-    And I click the button "Kind Toevoegen"
-    When I enter the following for <name> and <date of birth>
-    Then I try to do something else
-    And get a certain <outcome>
+    Then click the button to begin the calculation
+    When I enter the following for name:<naamVanKind> and day of birth:<geboorteDatum>
+    And the child has a limitation
+    And I select the following limitation:<beperking>
+    And select that the child is not an orphan
+    And I click the ToeVoeg-button
+    And I wait for <250> milliseconds
+    Then I select the following for BijslagTrekkende:<bijslag> and Rechthebbende:<rechtheb>
+    And I wait for <2000> milliseconds
+
     Examples:
-      | name | date of birth | outcome |
-      | Jim  | 11/10/1995    | 120     |
-      | Lien | 28/04/2000    | 127     |
-      | Nele | 23/05/1997    | 131     |
+      | naamVanKind | geboorteDatum | bijslag | rechtheb | beperking |
+      | Timmy       | 12/12/2012    | 1       | 1        | hjfsdf    |

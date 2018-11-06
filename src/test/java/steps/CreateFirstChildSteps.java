@@ -1,48 +1,93 @@
 package steps;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import io.cucumber.datatable.DataTable;
+import pages.CalculatorPage;
+import utils.DriverProvider;
 
 public class CreateFirstChildSteps {
-    @When("^I enter the following for name and date of birth$")
-    public void iEnterTheFollowingForNameAndDateOfBirth(DataTable dataTable) {
-        // Write code here that turns the phrase above into concrete actions
-        System.out.println("I used a datatable to enter" +
-                dataTable.cells().get(0).get(0) + " and " +
-                dataTable.cells().get(1).get(0)
-        );
+    static CalculatorPage calculatorPage;
+
+    @Before()
+    public void beforeHook() {
+        DriverProvider.initializeDriver();
+        calculatorPage = new CalculatorPage();
     }
 
     @Given("^I go to website \"([^\"]*)\"$")
-    public void iGoToWebsite(String arg0) {
-        // Write code here that turns the phrase above into concrete actions
-        System.out.println("I went to the website: " + arg0);
+    public void iGoToWebsite(String url) {
+        DriverProvider.getDriver().get(url);
     }
 
-    @And("^I click the button \"([^\"]*)\"$")
-    public void iClickTheButton(String arg0) {
-        // Write code here that turns the phrase above into concrete actions
-        System.out.println("I clicked the button \"" + arg0 + "\"");
+    @Then("^click the button to begin the calculation$")
+    public void clickTheButtonToBeginCalculation() {
+        calculatorPage.clickBeginButton();
     }
 
-    @When("^I enter the following for ([^\"]*) and ([^\"]*)$")
+    @And("^I wait for <(\\d+)> milliseconds$")
+    public void iWaitForMilliSeconds(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException itex) {
+            itex.printStackTrace();
+        }
+    }
+
+    @When("^I enter the following for name:([^\"]*) and day of birth:([^\"]*)$")
     public void iEnterTheFollowingForNameAndDateOfBirth(String name, String dateOfBirth) {
-        // Write code here that turns the phrase above into concrete actions
-        System.out.println("Entering name: " + name + " and dayOfBirth: " + dateOfBirth);
+        calculatorPage.vulNaamVanKind(name);
+        calculatorPage.vulGeboorteDatum(dateOfBirth);
     }
 
-    @Then("^I try to do something else$")
-    public void iTryToDoSomethingElse() {
-        // Write code here that turns the phrase above into concrete actions
-        System.out.println("---- Doing something else ----");
+    @And("^the child has no limitations$")
+    public void childHasNoLimitations() {
+        calculatorPage.clickBeperkingFalseButton();
     }
 
-    @And("^get a certain ([^\"]*)$")
-    public void getACertainOutcome(String outcome) {
-        // Write code here that turns the phrase above into concrete actions
-        System.out.println("This is the outcome XDDXDXDDDDDDDDDDXDDDDDDD LOL ROFLMAOJLKFHJ:KDSF");
+    @And("^the child has a limitation$")
+    public void childHasALimitation() {
+        calculatorPage.clickBeperkingTrueButton();
     }
+
+    @And("^I select the following limitation:([^\"]*)$")
+    public void iSelectTheFollowingLimitationLimitation(String beperkingBeschrijving) {
+        calculatorPage.clickBeperking(beperkingBeschrijving);
+    }
+
+    @And("^select that the child is not an orphan")
+    public void childIsNotAnOrphan() {
+        calculatorPage.clickWeesFalseButton();
+    }
+
+    @And("^select that the child is an orphan")
+    public void childIsAnOrphan() {
+        calculatorPage.clickWeesTrueButton();
+    }
+
+    @And("^I click the ToeVoeg-button$")
+    public void iClickTheToeVoegButton() {
+        calculatorPage.clickAddChildButton();
+    }
+
+    @Then("^I select the following for BijslagTrekkende:([^\"]*) and Rechthebbende:([^\"]*)")
+    public void chooseSituations(String bijslagTrekSitBeschrijving, String rechtHebSitBeschrijving) {
+        calculatorPage.clickSelectBijslagTrekLink();
+        iWaitForMilliSeconds(1000);
+        calculatorPage.clickBijslagTrekSituatie(bijslagTrekSitBeschrijving);
+        iWaitForMilliSeconds(1000);
+        calculatorPage.clickSelectRechtHebbendLink();
+        iWaitForMilliSeconds(1000);
+        calculatorPage.clickRechHebSituatie(rechtHebSitBeschrijving);
+    }
+
+    @After()
+    public void afterHook() {
+        DriverProvider.getDriver().quit();
+    }
+
+
 }
